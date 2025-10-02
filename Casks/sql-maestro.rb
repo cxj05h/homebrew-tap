@@ -1,6 +1,6 @@
 cask "sql-maestro" do
-  version "1.5.2"
-  sha256 "531dc1455e87868fb78dc0c6c89b1c2c4ccba65d7718cd89ba80e334b12da245"
+  version "1.5.3"
+  sha256 "ea68a0b759d63139c0be36f1764a9eaa4fe9677a08499f83b32abd7983c35432"
 
   url "https://github.com/cxj05h/SQL-Maestro/releases/download/v#{version}/SQLMaestro-v#{version}.zip"
   name "SQL Maestro"
