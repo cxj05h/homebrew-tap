@@ -1,7 +1,7 @@
 cask "sql-maestro" do
-  version "1.7.0"
+  version "1.7.1"
   #revision 1
-  sha256 "80fd5fc93bfcb87f115ccd4d2f81e2acab90ec4cef4062d5d26a858a4c0aedc4"
+  sha256 "9fd392c2c107e34ab38aa19c851c41f929cc8ac968286557c553748da93572ec"
 
   url "https://github.com/cxj05h/SQL-Maestro/releases/download/v#{version}/SQLMaestro-v#{version}.zip"
   name "SQL Maestro"
