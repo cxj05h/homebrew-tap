@@ -1,5 +1,5 @@
 cask "sql-maestro" do
-  version "1.8.3"
+  version "1.8.4"
   #revision 1
   sha256 "f1e6d585c417f126f4f8f02db9136d75dbb254d33111275076bce48114c87b0d"
 
