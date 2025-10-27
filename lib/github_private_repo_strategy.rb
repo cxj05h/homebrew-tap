@@ -1,20 +1,21 @@
 require "download_strategy"
 
 class GitHubPrivateRepositoryReleaseDownloadStrategy < CurlDownloadStrategy
-  def fetch(timeout: nil)
-    ohai "Downloading with GitHubPrivateRepositoryReleaseDownloadStrategy"
+  def _headers
     raise "HOMEBREW_GITHUB_API_TOKEN is not set!" unless ENV["HOMEBREW_GITHUB_API_TOKEN"]
+    {
+      "Authorization" => "Bearer #{ENV['HOMEBREW_GITHUB_API_TOKEN']}",
+      "Accept" => "application/octet-stream"
+    }
+  end
 
-    curl_args = [
-      "--location",
-      "--header", "Authorization: Bearer #{ENV['HOMEBREW_GITHUB_API_TOKEN']}",
-      "--header", "Accept: application/octet-stream",
-      "--output", temporary_path,
-      url
-    ]
-    system "curl", *curl_args
-    unless File.exist?(temporary_path)
-      raise "Download failed!"
-    end
+  def curl(*args, **options)
+    super(*args, **options.merge(headers: _headers))
+  end
+
+  # If you must override fetch, use this signature:
+  def fetch(timeout: nil)
+    # Just call super, as CurlDownloadStrategy does all the work.
+    super(timeout: timeout)
   end
 end
