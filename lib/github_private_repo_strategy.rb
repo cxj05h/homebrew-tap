@@ -7,8 +7,8 @@ class GitHubPrivateRepositoryReleaseDownloadStrategy < CurlDownloadStrategy
     raise "HOMEBREW_GITHUB_API_TOKEN is not set!" unless @github_token
   end
 
-  def fetch
-    # Add Authorization header for private repo access
+  # Accept *args and &block to match Homebrew internals
+  def fetch(*args, &block)
     curl_args = [
       "--location",
       "--header", "Authorization: Bearer #{@github_token}",
