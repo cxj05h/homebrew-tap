@@ -1,21 +1,15 @@
 require "download_strategy"
 
 class GitHubPrivateRepositoryReleaseDownloadStrategy < CurlDownloadStrategy
-  def initialize(url, name, version, **meta)
-    super
-    @github_token = ENV["HOMEBREW_GITHUB_API_TOKEN"] || ENV["HOMEBREW_GITHUB_TOKEN"]
-    raise "HOMEBREW_GITHUB_API_TOKEN is not set!" unless @github_token
+  def _headers
+    raise "HOMEBREW_GITHUB_API_TOKEN is not set!" unless ENV["HOMEBREW_GITHUB_API_TOKEN"]
+    {
+      "Authorization" => "Bearer #{ENV['HOMEBREW_GITHUB_API_TOKEN']}",
+      "Accept" => "application/octet-stream"
+    }
   end
 
-  def fetch(*args)
-    curl_args = [
-      "--location",
-      "--header", "Authorization: Bearer #{@github_token}",
-      "--header", "Accept: application/octet-stream",
-      "--output", temporary_path,
-      url
-    ]
-    # Use super for fallback if needed
-    system "curl", *curl_args
+  def curl(*args, **options)
+    super(*args, **options.merge(headers: _headers))
   end
 end
