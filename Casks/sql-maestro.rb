@@ -3,8 +3,8 @@
 require_relative "../lib/github_private_repo_strategy"
 
 cask "sql-maestro" do
-  version "1.9.6"
-  sha256 "8a62084b07235a8ede053c27a49f68efb1bf5433e1494ab893b389f4a20e232e"
+  version "1.9.7"
+  sha256 "68cfa3d1648ceaa3702b1ca7d43bf9cab6841de0644e3e60a437c163af0ea05f"
   
   url "https://github.com/cxj05h/SQL-Maestro/releases/download/v#{version}/SQLMaestro-v#{version}.zip",
       using: GitHubPrivateRepositoryReleaseDownloadStrategy
