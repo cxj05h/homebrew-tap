@@ -7,11 +7,12 @@ class GitHubPrivateRepositoryReleaseDownloadStrategy < CurlDownloadStrategy
     token = ENV["HOMEBREW_GITHUB_API_TOKEN"]
     raise "HOMEBREW_GITHUB_API_TOKEN is not set!" unless token
 
-    # Get version and asset name from url or tap formula state:
-    tag = @url # url is "v1.9.7"
+    # Get the tag name from the URL (e.g., "v1.9.7")
+    tag = @url.to_s.sub(/^.*\/([^\/]+)$/, '\1') if @url.include?("/")
+    tag ||= @url.to_s
     asset_name = "SQLMaestro-#{tag}.zip"
 
-    # Fetch release info from GitHub API
+    # Fetch the release metadata from GitHub API
     release_api = "https://api.github.com/repos/cxj05h/SQL-Maestro/releases/tags/#{tag}"
     release_json = URI.open(release_api,
       "Authorization" => "Bearer #{token}",
@@ -21,14 +22,18 @@ class GitHubPrivateRepositoryReleaseDownloadStrategy < CurlDownloadStrategy
     raise "Asset #{asset_name} not found in release!" unless asset
     asset_id = asset["id"]
 
-    # Download actual release asset using asset API
+    # Download the release asset using its ID
     asset_api = "https://api.github.com/repos/cxj05h/SQL-Maestro/releases/assets/#{asset_id}"
+
+    # Use Homebrew's expected file path (temporary_path) for the download
+    output_path = cached_location || temporary_path
+
     system "curl", "-L",
       "-H", "Authorization: Bearer #{token}",
       "-H", "Accept: application/octet-stream",
-      "--output", temporary_path,
+      "--output", output_path,
       asset_api
 
-    raise "Download failed!" unless File.exist?(temporary_path)
+    raise "Download failed!" unless File.exist?(output_path)
   end
 end
