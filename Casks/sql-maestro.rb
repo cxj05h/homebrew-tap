@@ -1,6 +1,6 @@
 # In your cask formula file (e.g., Casks/sql-maestro.rb):
 
-require_relative "../lib/github_private_repo_strategy.rb"
+require_relative "../lib/github_private_repo_strategy"
 
 cask "sql-maestro" do
   version "1.9.7"
