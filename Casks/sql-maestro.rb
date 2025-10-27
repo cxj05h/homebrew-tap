@@ -5,9 +5,8 @@ require_relative "../lib/github_private_repo_strategy"
 cask "sql-maestro" do
   version "1.9.7"
   sha256 "68cfa3d1648ceaa3702b1ca7d43bf9cab6841de0644e3e60a437c163af0ea05f"
-  
-  url "https://github.com/cxj05h/SQL-Maestro/releases/download/v#{version}/SQLMaestro-v#{version}.zip",
-      using: GitHubPrivateRepositoryReleaseDownloadStrategy
+  url "https://github.com/cxj05h/SQL-Maestro/releases/tags/v#{version}", using: GitHubPrivateRepositoryReleaseDownloadStrategy
+
 
   name "SQL Maestro"
   desc "SQL template manager for database troubleshooting"
@@ -24,4 +23,15 @@ cask "sql-maestro" do
     "~/Library/Application Support/SQLMaestro",
     "~/Library/Preferences/com.sqlmaestro.SQLMaestro.plist",
   ]
+end
+
+
+
+require_relative "../lib/github_private_repo_strategy"
+
+cask "sql-maestro" do
+  version "1.9.7"
+  sha256 "68cfa3d1648ceaa3702b1ca7d43bf9cab6841de0644e3e60a437c163af0ea05f"
+  url "v1.9.7", using: GitHubPrivateRepositoryReleaseDownloadStrategy
+  # ... rest as before ...
 end
