@@ -39,8 +39,8 @@ class GitHubPrivateRepositoryReleaseDownloadStrategy < CurlDownloadStrategy
 end
 
 cask "sql-maestro" do
-  version "2.0.4"
-  sha256 "5c671663232214b1fd902e349e70a1bd506b68fc904d804409b751c2be531a14"
+  version "2.0.5"
+  sha256 "9291c5aeed4d89dd5ac7e151a6a0522d8bda59ce905c74bb756065fa7a0131b4"
   url "v#{version}", using: GitHubPrivateRepositoryReleaseDownloadStrategy
   name "SQL Maestro"
   desc "SQL template manager for database troubleshooting"
