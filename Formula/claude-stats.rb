@@ -1,26 +1,26 @@
 class ClaudeStats < Formula
   desc "Terminal dashboard for Claude Code usage — session browser, token stats, chat history"
   homepage "https://github.com/cxj05h/claude-stats"
-  version "0.4.0"
+  version "0.4.1"
   license "MIT"
 
   on_macos do
     if Hardware::CPU.arm?
-      url "https://github.com/cxj05h/claude-stats/releases/download/v0.4.0/claude-stats-aarch64-apple-darwin.tar.gz"
-      sha256 "ee07fefeab82938768ee73565b5c966d5ef91e22bdff86726556e209d7820db4"
+      url "https://github.com/cxj05h/claude-stats/releases/download/v0.4.1/claude-stats-aarch64-apple-darwin.tar.gz"
+      sha256 "f7894d567f3b2e7db9230153bf84ae858b8cf4e7d3958a53af9296dcd779ff66"
     else
-      url "https://github.com/cxj05h/claude-stats/releases/download/v0.4.0/claude-stats-x86_64-apple-darwin.tar.gz"
-      sha256 "ec738c49f6b44fcd43bb59f649d12b4a9217f937a570878eaefafef0e1dc541d"
+      url "https://github.com/cxj05h/claude-stats/releases/download/v0.4.1/claude-stats-x86_64-apple-darwin.tar.gz"
+      sha256 "44049bf57ad2aa5a57bf34880fbd76ee21497c5468d9e4ccfcaa129fbe8d5d8f"
     end
   end
 
   on_linux do
     if Hardware::CPU.arm?
-      url "https://github.com/cxj05h/claude-stats/releases/download/v0.4.0/claude-stats-aarch64-unknown-linux-gnu.tar.gz"
-      sha256 "77a6085c157794fe5dc96fe46fc976430f41964dea85fa30418b3b9fea630e40"
+      url "https://github.com/cxj05h/claude-stats/releases/download/v0.4.1/claude-stats-aarch64-unknown-linux-gnu.tar.gz"
+      sha256 "adefdc3dbb2820615e865fc3585f64386c3157d42005d32813c0817dc9e2ba87"
     else
-      url "https://github.com/cxj05h/claude-stats/releases/download/v0.4.0/claude-stats-x86_64-unknown-linux-gnu.tar.gz"
-      sha256 "a5050e39ffaa61f1cbaed98fb28d777ae6a9d794da5ed12eb47f51b291ef49f7"
+      url "https://github.com/cxj05h/claude-stats/releases/download/v0.4.1/claude-stats-x86_64-unknown-linux-gnu.tar.gz"
+      sha256 "0f047964f546516d3365ede6cfd41f67ad46ff810facd9b6b3729aa6ed4b46d8"
     end
   end
 
